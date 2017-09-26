@@ -45,14 +45,15 @@
     var TumblrButton = ReactSocial.TumblrButton;
     var XingButton = ReactSocial.XingButton;
     var EmailButton = ReactSocial.EmailButton;
+    var OdnoklassnikiButton = ReactSocial.OdnoklassnikiButton;
 
     var App = React.createClass({
         render: function () {
-            var link = "https://github.com/olahol/react-social/", facebookAppId = "yourFacebookAppId", message = "React Social!";
+            var link = "https://github.com/olahol/react-social/", facebookAppId = "yourFacebookAppId", message = "React Social!", media="https://via.placeholder.com/350x350";
 
             return (
               <div>
-                <FacebookButton title="Share via Facebook" message={message} appId={facebookAppId} url={link} element="a" className="">
+		<FacebookButton title="Share via Facebook" message={message} appId={facebookAppId} url={link} element="a" className="" sharer={true}>
                     <i className="fa fa-facebook-square"/>
                 </FacebookButton>
                 <TwitterButton title="Share via Twitter" message={message} url={link} element="a" className="">
@@ -70,7 +71,7 @@
                 <RedditButton title="Share via Reddit" message={message} url={link} element="a" className="">
                     <i className="fa fa-reddit-square"/>
                 </RedditButton>
-                <VKontakteButton title="Share via VKontakte" message={message} url={link} element="a" className="">
+		<VKontakteButton title="Share via VKontakte" message={message} url={link} element="a" className="" media={media}>
                     <i className="fa fa-vk"/>
                 </VKontakteButton>
                 <EmailButton title="Share via E-Mail" message={message} url={link} element="a" className="">
@@ -82,6 +83,9 @@
                 <TumblrButton title="Share via Tumblr" message={message} url={link} element="a" className="">
                     <i className="fa fa-tumblr"/>
                 </TumblrButton>
+		<OdnoklassnikiButton title="Share via Odnoklassniki" message={message} url={link} element="a" className="" media={media}>
+                    <i className="fa fa-tumblr"/>
+                </OdnoklassnikiButton>
             </div>
             );
         }

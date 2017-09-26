@@ -419,17 +419,20 @@
       appId: PropTypes.oneOfType([
         PropTypes.string,
         PropTypes.number
-      ]).isRequired,
+      ]),
       sharer: PropTypes.bool
     }
 
     , constructUrl: function () {
       if (this.props.sharer) {
-        return "https://www.facebook.com/dialog/share?"
-             + "app_id=" + encodeURIComponent(this.props.appId)
-             + "&display=popup&caption=" + encodeURIComponent(this.props.message)
-             + "&href=" + encodeURIComponent(this.props.url)
-             + "&redirect_uri=" + encodeURIComponent("https://www.facebook.com/")
+     //   return "https://www.facebook.com/dialog/share?"
+     //        + "app_id=" + encodeURIComponent(this.props.appId)
+     //        + "&display=popup&caption=" + encodeURIComponent(this.props.message)
+     //        + "&href=" + encodeURIComponent(this.props.url)
+     //        + "&redirect_uri=" + encodeURIComponent("https://www.facebook.com/")
+      
+	    return "https://www.facebook.com/sharer.php?u="
+		+ encodeURIComponent(this.props.url)
       }
 
       return "https://www.facebook.com/dialog/feed?"
@@ -458,7 +461,7 @@
           media = encodeURIComponent(this.props.media),
           title = encodeURIComponent(this.props.title),
           message = encodeURIComponent(this.props.message);
-      var search_keys = { url: url, media: media, title: title, description: message };
+      var search_keys = { url: url, imageUrl: media, title: title, description: message };
       var search = Object.keys(search_keys).map(function (search_key) {
         return search_key + '=' + search_keys[search_key];
       }).join('&');
@@ -540,7 +543,8 @@
         return "http://vk.com/share.php?url="
                 + encodeURIComponent(this.props.url) + "&title="
                 + encodeURIComponent(this.props.title) + "&description="
-                + encodeURIComponent(this.props.message);
+                + encodeURIComponent(this.props.message) +"&image="
+		+ encodeURIComponent(this.props.media);
     }
   });
 
